@@ -1,0 +1,60 @@
+# 민감 정보 (절대 커밋 금지)
+server.properties
+ops.json
+banned-ips.json
+banned-players.json
+whitelist.json
+usercache.json
+eula.txt
+*.token
+*.key
+*.pem
+*.secret
+
+# 런타임 파일
+*.log
+*.pid
+*.lock
+logs/
+*.gz
+console*
+
+# 빌드 캐시 및 라이브러리
+libraries/
+versions/
+cache/
+
+# 크래시 리포트
+crash-reports/
+
+# 서버 실행 파일
+server.jar
+paper-*.jar
+minecraft_server*.jar
+
+# 백업
+*.bak
+*.backup
+*.tar.gz
+*.zip
+config_backup*/
+
+# 월드 데이터
+world/
+world_nether/
+world_the_end/
+
+# 설정
+paper-world-defaults.yml
+permissions.yml
+help.yml
+bukkit.yml
+commands.yml
+spigot.yml
+
+# 백업 디렉토리
+world_backup*/
+backup_*/
+
+# 환경 변수
+.env
