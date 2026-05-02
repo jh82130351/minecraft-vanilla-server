@@ -43,7 +43,7 @@
 | 데이터팩 | 설명 | 버전 |
 |----------|------|------|
 | `coords_display` | 플레이어 좌표 + 8방위 보스바 표시 | v2.1 |
-| `regen_system` | 이동 상태별 체력 회복 시스템 | v1.0 |
+| `regen_system` | 체력 자동 회복 시스템 | v2.0 |
 
 ### 데이터팩 구조 (26.1.2+)
 ```
@@ -55,6 +55,7 @@ datapacks/
 │       │   └── function/
 │       │       ├── load.mcfunction
 │       │       ├── tick.mcfunction
+│       │       └── detect_state.mcfunction
 │       │       └── update_all.mcfunction
 │       └── minecraft/tags/function/
 │           ├── load.json
@@ -154,22 +155,32 @@ scoreboard players add $timer coord_timer 1
 
 ---
 
-### 2. regen_system (v1.0) — 이동 상태별 체력 회복
+### 2. regen_system (v2.0) — 체력 자동 회복
 
 **파일:** `regen_system/`
 
-#### 이동 상태 감지 로직 (detect_state.mcfunction)
-1. **SLEEP (잠자기):** 20틱(1초)마다 ❤️ 1 회복 (허기 7↑)
-2. **IDLE (서있기):** 60틱(3초)마다 ❤️ 1 회복 (허기 7↑)
-3. **RUN (달리기):** 회복 없음, 타이머 리셋
-4. **SWIM (수영):** 100틱(5초)마다 ❤️ 0.5 회복
-5. **WALK (걷기):** 100틱(5초)마다 ❤️ 0.5 회복
+#### 동작 방식
+- **SLEEP (잠자기):** 20틱(1초)마다 ❤️ 1 회복 (`regeneration 3`)
+- **그 외 (서있기/걷기/달리기/수영):** 60틱(3초)마다 ❤️ 0.5 회복 (`regeneration 2`)
+
+#### detect_state.mcfunction
+```mcfunction
+# 매 틱마다 타이머 증가
+scoreboard players add @s regen_timer 1
+
+# SLEEP (잠자기) — 20틱(1초)마다 ❤️ 1 회복
+execute if entity @s[nbt={Sleeping:1b}] if score @s regen_timer matches 20.. run scoreboard players set @s regen_timer 0
+execute if entity @s[nbt={Sleeping:1b}] if score @s regen_timer matches 20.. run effect give @s regeneration 3 0 true
+execute if entity @s[nbt={Sleeping:1b}] run return fail
+
+# 그 외 — 60틱(3초)마다 ❤️ 0.5 회복
+execute if score @s regen_timer matches 60.. run scoreboard players set @s regen_timer 0
+execute if score @s regen_timer matches 60.. run effect give @s regeneration 2 0 true
+```
 
 **사용 scoreboard:**
-- `regen_timer` — 상태별 회복 타이머
-- `prev_x`, `prev_y`, `prev_z` — 이전 위치 (IDLE 감지용)
-- `regen_tmp0~2` — 임시 좌표 저장
-- `food_lvl` — 허기 레벨 확인
+- `regen_timer` — 회복 타이머
+- `food_lvl` — 허기 레벨
 
 ---
 
@@ -266,4 +277,16 @@ playsound <sound> <source> <targets> <pos> [<volume>] [<pitch>]
 - `data/minecraft/tags/functions/` → `data/minecraft/tags/function/`
 - 함수 선언 태그(`load.json`, `tick.json`)도 마찬가지
 - 26.1.2에서는 `function/`(단수) 폴더만 인식함
+
+#### [변경] regen_system 단순화 (v2.0)
+- **배경:** 복잡한 상태 감지(걷기/달리기/수영 구분)가 잘 작동하지 않아 단순화
+- **변경 전:** SLEEP/IDLE/RUN/SWIM/WALK 5가지 상태별 회복 속도 + 액션바/사이드바 표시
+- **변경 후:** SLEEP(1초 ❤️1) / 그 외(3초 ❤️0.5) 2가지로 통합
+- **삭제된 파일:** `regen_idle.mcfunction`, `regen_walk.mcfunction`, `regen_swim.mcfunction`, `regen_sleep.mcfunction`
+- **사이드바 상태 표시 제거** — 이제 보스바만 표시 (coords_display)
+
+#### [변경] RUN 감지 NBT → Motion 속도 기반
+- **1.21+에서 `{Sprint:1b}` NBT 제거됨**
+- 변경 전: `execute if entity @s[nbt={Sprint:1b}]`
+- 변경 후: Motion xz 속도값으로 걷기/RUN 구분 (현재는 단순화로 불필요)
 
