@@ -229,3 +229,30 @@ scripts/push-agent-config.sh  # 비공개 레포 (설정)
 ## 📜 라이선스
 
 MIT License
+
+#### [변경] 좌표 표시 액션바 → 보스바 전환
+- **배경:** 데이터팩 2개가 동시에 액션바를 사용하면 충돌 발생 (regen_system도 액션바 사용 예정)
+- **변경 전:** `title @s actionbar [...]` 로 액션바에 좌표 표시
+- **변경 후:** `bossbar set minecraft:coords name [...]` 로 보스바에 좌표 표시
+- **추가:** `load.mcfunction`에서 `bossbar add minecraft:coords`로 보스바 생성 + 설정
+- **보스바 사양:** 초록색, 노치 스타일(notched_6), 최대값=1, 모든 플레이어에게 표시
+
+#### [참고] `playsound` 문법 변경 상세
+1.21+에서 `/playsound` 명령어의 문법이 변경되어 **소리 위치(좌표)가 필수**가 되었습니다.
+```
+# 1.20 이하 (선택적 위치)
+playsound <sound> <source> <targets> [<volume>] [<pitch>]
+
+# 1.21+ (위치 필수)
+playsound <sound> <source> <targets> <pos> [<volume>] [<pitch>]
+```
+- `@s`로 자신에게 재생할 때도 `~ ~ ~` 좌표가 필요합니다.
+- 영향을 받은 파일: `regen_system:regen_idle`
+
+#### [참고] `function/` 폴더명 변경 히스토리
+1.21 변경점은 아래와 같습니다:
+- `data/<namespace>/functions/` → `data/<namespace>/function/`
+- `data/minecraft/tags/functions/` → `data/minecraft/tags/function/`
+- 함수 선언 태그(`load.json`, `tick.json`)도 마찬가지
+- 26.1.2에서는 `function/`(단수) 폴더만 인식함
+
