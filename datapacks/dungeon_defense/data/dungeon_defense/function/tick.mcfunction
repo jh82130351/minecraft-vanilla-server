@@ -1,8 +1,7 @@
-# 디버깅
-# DEBUG: function dungeon_defense:debug
+# 디버깅 (테스트 완료 후 주석 처리)
+# function dungeon_defense:debug
 
 # 1단계 토큰 사용 감지 (우클릭)
-function dungeon_defense:debug
 execute as @a[scores={use_paper=1..}] if items entity @s weapon.mainhand paper[custom_data={dungeon_token:1}] run function dungeon_defense:token/use_stage1
 
 # 2단계 토큰 사용 감지
