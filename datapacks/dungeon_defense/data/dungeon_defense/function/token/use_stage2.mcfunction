@@ -1,4 +1,4 @@
-clear @s paper[minecraft:custom_data={dungeon_token:2}] 1
+clear @s paper[custom_data={dungeon_token:2}] 1
 
 scoreboard players set @s dungeon_timer 60
 tag @s add waiting_teleport
