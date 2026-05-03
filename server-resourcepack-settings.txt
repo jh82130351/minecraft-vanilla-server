@@ -1,0 +1,5 @@
+require-resource-pack=true
+resource-pack=file://dungeon_resources.zip
+resource-pack-id=
+resource-pack-prompt=던전 디펜스 리소스팩이 필요합니다.
+resource-pack-sha1=9ebe4ae33b36b64981f0b4562dfbcb764c974627
