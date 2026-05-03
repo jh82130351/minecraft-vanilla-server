@@ -22,6 +22,8 @@ tellraw @s [{"text":"5. ","color":"gold"},{"text":"👁️ 야간 투시 - ","co
 tellraw @s [{"text":"6. ","color":"gold"},{"text":"👻 투명화 - ","color":"gray"},{"text":"80 코인","color":"gold"}]
 tellraw @s [{"text":"7. ","color":"gold"},{"text":"🌊 수중 호흡 - ","color":"blue"},{"text":"40 코인","color":"gold"}]
 tellraw @s [{"text":"8. ","color":"gold"},{"text":"🪶 느린 낙하 - ","color":"white"},{"text":"40 코인","color":"gold"}]
+tellraw @s [{"text":"9. ","color":"gold"},{"text":"⛏️ 채굴 속도 - ","color":"gold"},{"text":"50 코인","color":"gold"}]
+tellraw @s [{"text":"10. ","color":"gold"},{"text":"🐰 점프 강화 - ","color":"green"},{"text":"50 코인","color":"gold"}]
 
 tellraw @s {"text":""}
 
@@ -30,6 +32,7 @@ tellraw @s {"text":"━━ 강화 포션 (4분) ━━","color":"white","bold":t
 tellraw @s [{"text":"11. ","color":"gold"},{"text":"💨 신속 II - ","color":"aqua"},{"text":"100 코인","color":"gold"}]
 tellraw @s [{"text":"12. ","color":"gold"},{"text":"💪 힘 II - ","color":"red"},{"text":"100 코인","color":"gold"}]
 tellraw @s [{"text":"13. ","color":"gold"},{"text":"❤️ 재생 II - ","color":"light_purple"},{"text":"120 코인","color":"gold"}]
+tellraw @s [{"text":"14. ","color":"gold"},{"text":"⛏️ 채굴 속도 II - ","color":"gold"},{"text":"100 코인","color":"gold"}]
 
 tellraw @s {"text":""}
 

@@ -130,6 +130,39 @@ execute if score @s buy matches 20 run playsound minecraft:entity.experience_orb
 execute if score @s buy matches 20 run scoreboard players reset @s buy
 execute if score @s buy matches 20 run return 0
 
+# 번호 9: 채굴 속도 (50 코인)
+execute if score @s buy matches 9 unless score @s coins matches 50.. run tellraw @s {"text":"❌ 잔액 부족! (필요: 50 코인)","color":"red"}
+execute if score @s buy matches 9 unless score @s coins matches 50.. run scoreboard players reset @s buy
+execute if score @s buy matches 9 unless score @s coins matches 50.. run return 0
+execute if score @s buy matches 9 run scoreboard players remove @s coins 50
+execute if score @s buy matches 9 run give @s potion[potion_contents={potion:"minecraft:long_haste"}] 1
+execute if score @s buy matches 9 run tellraw @s {"text":"✅ 채굴 속도 포션 구매 완료!","color":"green"}
+execute if score @s buy matches 9 run playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 1 1
+execute if score @s buy matches 9 run scoreboard players reset @s buy
+execute if score @s buy matches 9 run return 0
+
+# 번호 10: 점프 강화 (50 코인)
+execute if score @s buy matches 10 unless score @s coins matches 50.. run tellraw @s {"text":"❌ 잔액 부족! (필요: 50 코인)","color":"red"}
+execute if score @s buy matches 10 unless score @s coins matches 50.. run scoreboard players reset @s buy
+execute if score @s buy matches 10 unless score @s coins matches 50.. run return 0
+execute if score @s buy matches 10 run scoreboard players remove @s coins 50
+execute if score @s buy matches 10 run give @s potion[potion_contents={potion:"minecraft:long_leaping"}] 1
+execute if score @s buy matches 10 run tellraw @s {"text":"✅ 점프 강화 포션 구매 완료!","color":"green"}
+execute if score @s buy matches 10 run playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 1 1
+execute if score @s buy matches 10 run scoreboard players reset @s buy
+execute if score @s buy matches 10 run return 0
+
+# 번호 14: 채굴 속도 II (100 코인)
+execute if score @s buy matches 14 unless score @s coins matches 100.. run tellraw @s {"text":"❌ 잔액 부족! (필요: 100 코인)","color":"red"}
+execute if score @s buy matches 14 unless score @s coins matches 100.. run scoreboard players reset @s buy
+execute if score @s buy matches 14 unless score @s coins matches 100.. run return 0
+execute if score @s buy matches 14 run scoreboard players remove @s coins 100
+execute if score @s buy matches 14 run give @s potion[potion_contents={potion:"minecraft:strong_haste"}] 1
+execute if score @s buy matches 14 run tellraw @s {"text":"✅ 채굴 속도 II 포션 구매 완료!","color":"green"}
+execute if score @s buy matches 14 run playsound minecraft:entity.experience_orb.pickup player @s ~ ~ ~ 1 1
+execute if score @s buy matches 14 run scoreboard players reset @s buy
+execute if score @s buy matches 14 run return 0
+
 # 잘못된 번호
 tellraw @s {"text":"❌ 잘못된 번호입니다! /trigger shop 으로 목록 확인","color":"red"}
 scoreboard players reset @s buy
