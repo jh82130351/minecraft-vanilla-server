@@ -11,6 +11,22 @@ scoreboard objectives add kill_enderman minecraft.killed:minecraft.enderman
 scoreboard objectives add kill_wither_skeleton minecraft.killed:minecraft.wither_skeleton
 scoreboard objectives add kill_blaze minecraft.killed:minecraft.blaze
 
+# 지상 추가 몹
+scoreboard objectives add kill_cave_spider minecraft.killed:minecraft.cave_spider
+scoreboard objectives add kill_husk minecraft.killed:minecraft.husk
+scoreboard objectives add kill_stray minecraft.killed:minecraft.stray
+scoreboard objectives add kill_witch minecraft.killed:minecraft.witch
+scoreboard objectives add kill_phantom minecraft.killed:minecraft.phantom
+
+# 네더 추가 몹
+scoreboard objectives add kill_magma_cube minecraft.killed:minecraft.magma_cube
+scoreboard objectives add kill_piglin minecraft.killed:minecraft.piglin
+scoreboard objectives add kill_piglin_brute minecraft.killed:minecraft.piglin_brute
+scoreboard objectives add kill_ghast minecraft.killed:minecraft.ghast
+
+# 특수 몹
+scoreboard objectives add kill_drowned minecraft.killed:minecraft.drowned
+
 # 송금 시스템
 scoreboard objectives add coin_send trigger "송금"
 scoreboard objectives add coin_accept trigger "송금 수락"

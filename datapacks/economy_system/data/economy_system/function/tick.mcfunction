@@ -12,6 +12,22 @@ execute as @a[scores={kill_enderman=1..}] run function economy_system:earn/mob_k
 execute as @a[scores={kill_wither_skeleton=1..}] run function economy_system:earn/mob_kill
 execute as @a[scores={kill_blaze=1..}] run function economy_system:earn/mob_kill
 
+# 지상 추가 몹
+execute as @a[scores={kill_cave_spider=1..}] run function economy_system:earn/mob_kill
+execute as @a[scores={kill_husk=1..}] run function economy_system:earn/mob_kill
+execute as @a[scores={kill_stray=1..}] run function economy_system:earn/mob_kill
+execute as @a[scores={kill_witch=1..}] run function economy_system:earn/mob_kill
+execute as @a[scores={kill_phantom=1..}] run function economy_system:earn/mob_kill
+
+# 네더 추가 몹
+execute as @a[scores={kill_magma_cube=1..}] run function economy_system:earn/mob_kill
+execute as @a[scores={kill_piglin=1..}] run function economy_system:earn/mob_kill
+execute as @a[scores={kill_piglin_brute=1..}] run function economy_system:earn/mob_kill
+execute as @a[scores={kill_ghast=1..}] run function economy_system:earn/mob_kill
+
+# 특수 몹
+execute as @a[scores={kill_drowned=1..}] run function economy_system:earn/mob_kill
+
 # 송금 명령어 처리
 execute as @a[scores={coin_send=1..}] run function economy_system:transfer/send_init
 execute as @a[scores={coin_accept=1..}] run function economy_system:transfer/send_confirm
